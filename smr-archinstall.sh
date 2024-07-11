@@ -15,4 +15,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 #echo $drive_val
-fdisk -l /dev/$drive_val
+#fdisk -l /dev/$drive_val
+echo "label: gpt" | sfdisk /dev/$drive_val --wipe always
+echo ",1G,U" | sfdisk /dev/$drive_val
+echo ",," | sfdisk /dev/$drive_val
